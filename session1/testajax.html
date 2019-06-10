@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+    <h2>Welcome to ajax examples</h2>
+
+
+    <ul id="lista-postari">
+
+    </ul>
+    <script>
+
+        
+
+        $.ajax({
+            url : 'https://jsonplaceholder.typicode.com/posts',
+            success : function(x){
+                console.log('am vorbit cu serverul')
+                console.log(x);
+
+                for(var i=0; i<x.length; i++){
+                   $('#lista-postari').append('<li>'+x[i].title+'</li>');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

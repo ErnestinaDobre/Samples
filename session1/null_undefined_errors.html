@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<div id="div-hello">Hello</div>
+
+
+<script>
+    var div1 = document.getElementById('div-hello');
+    var div2 = document.getElementById('div-test');
+    var div3 = null;
+
+    console.log('div1: ', div1.innerHTML);
+    console.log('div2: ', div2.innerHTML);
+    console.log('div 3: ', div3);
+
+
+    console.log('-------end script-------')
+
+</script>
+
+
+<script>
+    console.log('THIS IS ANOTHER SCRIPT');
+    var div4; // undefined
+    console.log(div4);  //
+
+    console.log('-----end second script------');
+
+
+    // console.log(div5); // Error - not defined
+</script>
+
+</body>
+</html>

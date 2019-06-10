@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Long text of javascript</h2>
+    <div id="client-div"></div>
+<script>
+    var client = {
+        nume : "Ionescu",
+        prenume : "Ion",
+        varsta : 30,
+        email : "ion@gmail.com"
+    };
+
+    // $.ajax({
+    //     url : "http://aplicatie-backend.com/clients",
+    //     success : function(datele){
+    //         console.log(datele);
+    //     }
+    // });
+
+    var clientDiv = document.getElementById('client-div') 
+    var clientDivContents = `Client name:  ${client.nume}  last name:  ${client.prenume} age:  ${client.varsta}`;
+    
+
+    clientDiv.innerHTML = clientDivContents;
+
+    console.log('-------------------------------');
+    var produs = {
+        denumire : "XBOX",
+        pret : 100.0
+    };
+
+    var pretCuTva = produs.pret * 1.24;
+    // var pretCuTva = produs.pret + produs.pret * 0.24;
+    console.log(`Product name: ${produs.denumire} and costs: ${produs.pret} VAT INCLUDED: ${pretCuTva}`);
+    console.log(`Product name: ${produs.denumire} and costs: ${produs.pret} VAT INCLUDED: ${produs.pret * 1.24}`);
+
+</script>
+</body>
+</html>

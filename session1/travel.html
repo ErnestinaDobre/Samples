@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <h2>Hello</h2>
+    <h3>Weather stuff</h3>
+
+
+    Orasul tau: <input type="text" placeholder="Your city here" id="oras-input">
+
+    <button id="buton-de-click-uit" class="buton-misto">Click me</button>
+    <button class="buton-misto" onclick="document.getElementById('oras-input').value = ''">Sterge valoarea</button>
+    <button id="reset" onclick="removeDummy()">Reseteaza cautarea</button>
+    <hr>
+    <div id="dummy">Vremea in <span class="numele" style="color: blue; font-weight: bold"></span> va fi: <div
+            class="data"></div>
+    </div>
+    <script>
+        // http://api.openweathermap.org/data/2.5/weather?q=Bucharest&appid=50a86f4003ae6fbf7aee741fe852000b
+
+        // function salutare(){
+        //     console.log('salutare! totul e okay!');
+        // }
+
+        // $(document).ready(salutare);  
+
+        // salutare();
+
+
+        $(document).ready(function () {
+            console.log('still ready!');
+
+            $('#buton-de-click-uit').click(function () { // cand dam click pe buton, se intampla functia asta
+                console.log('click on button!');
+                console.log($('#oras-input').val());  // / preluare de valoare
+                var numeOras = $('#oras-input').val();
+                var orasulIntrodus = document.querySelector(".numele")
+                orasulIntrodus.innerHTML = numeOras
+
+                // http://api.openweathermap.org/data/2.5/weather?q=Berlin&APPID=50a86f4003ae6fbf7aee741fe852000b
+                var urlVreme = 'http://api.openweathermap.org/data/2.5/weather?q=' + numeOras + '&APPID=50a86f4003ae6fbf7aee741fe852000b';
+                var configurareAjax = {
+                    url: urlVreme,
+                    success: function (datele) {
+                        var detalii = document.querySelector(".data");
+                        console.log(datele);
+                        detalii.innerHTML += "Temperatura este: " + datele.main.temp + " °F" + "<br>"
+                            + "Presiunea atmosferica este: " + datele.main.pressure + " mm/Hg" + "<br>"
+                            + "Nivelul de umiditate este de: " + datele.main.humidity + "%" + "<br>"
+                            + "Temperaturi minime : " + datele.main.temp_min + " °F" + "<br>"
+                            + "Temperaturi maxime : " + datele.main.temp_max + " °F" + "<br>"
+                        console.log('am vorbit cu server-ul si zice: ', datele);
+
+                    }
+
+                };
+
+                $.ajax(configurareAjax);
+                $(document).ready(function () {
+
+                });
+
+
+            })
+
+        });
+        function removeDummy() {
+            document.getElementById('dummy').innerHTML = `Vremea in <span class="numele" style="color: blue; font-weight: bold"></span> va fi: <div
+            class="data">`;
+
+
+        }
+
+
+
+
+
+
+
+        // var butoane = document.querySelectorAll('.buton-misto');
+        // console.log('butoanele sunt: ', butoane);
+        // for(var buton of butoane){
+        //     buton.innerHTML = buton.innerHTML + " ! ";
+        //     buton.addEventListener('click', function(){  console.log('ai dat click pe ')  });
+        // }
+    </script>
+</body>
+
+</html>
